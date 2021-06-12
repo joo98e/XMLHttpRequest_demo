@@ -16,7 +16,7 @@ const onNameSubmit = (e, a) => {
     e.preventDefault();
 
     const API = new XMLHttpRequest();
-
+    
     API.open('GET', './amIJSON.json', true);
 
     API.send();
@@ -26,7 +26,7 @@ const onNameSubmit = (e, a) => {
             if (API.status == 200) {
                 let data = JSON.parse(API.response);
                 console.log(typeof data, data);
-
+                // node로 받아오기 시도해보기
                 for (let key in data) {
                     try {
                         const TAGNAME_P = document.createElement('P');
@@ -68,29 +68,40 @@ class ADD_TAG {
 class SEARCH extends ADD_TAG {
     SEARCH() {
         console.log('GOOD');
-        console.log(this.ADD)
+        console.log(this.ADD);
     }
 }
 
 // listConsole('태복', '고양시', '가', '나', '다', 1);
 listConsole = (name, address, ...arr) => {
-    console.log(`name is ${name}`);
-    console.log(`address is ${address}`);
+    const isOBJ = {
+        name : name,
+        address : address,
+        etc : new Array()
+    };
+
+    console.log(isOBJ.etc.push(...arr));
+
     try {
-        console.log(`그 외 "${arr}" 입니다.`);
+        console.log(isOBJ);
     } catch (error) {
 
     }
 }
-const list = ['list1', 'list2', 'list3'];
-const listSecond = ['list4', ...list];
 
-whatIsReduce = () => {
-    ['apple', 'banana', 'melon'].reduce(
+const list = ['list1', 'list2', 'list3'];
+const listSecond = [...list, 'list4'];
+const fruit = ['apple', 'banana', 'melon'];
+const a = [1, 2, 3, 4, 5];
+
+whatIsReduce = (arg) => {
+    arg.reduce(
         (accumulator, currentValue, currentIndex, array) => {
-            console.log(currentValue);
+            console.log(currentIndex, currentValue);
             console.log(accumulator);
             return accumulator + currentValue + ', ';
+            // HELP..
+            // 마지막 요소 추가 안됨
         },
     'basic ');
 }
