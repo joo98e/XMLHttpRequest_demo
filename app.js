@@ -35,7 +35,7 @@ const onNameSubmit = (e, a) => {
                     } catch (error) {
                         console.log('tag add error');
                     } finally {
-                        
+
                     }
                 }
 
@@ -49,13 +49,48 @@ const onNameSubmit = (e, a) => {
 const INT_MULTIPLY = x => x * x;
 
 class ADD_TAG {
-    constructor(name){
+    constructor(name) {
         this.name = name;
     }
 
-    ACTION_ADD = (text) => {
+    ADD = (text) => {
         const tag = document.createElement(this.name);
+
         tag.innerHTML = `추가될 텍스트는 ${text}입니다.`;
+
+        tag.addEventListener('click', e => console.log(e));
+
         document.body.append(tag);
     }
+
+}
+
+class SEARCH extends ADD_TAG {
+    SEARCH() {
+        console.log('GOOD');
+        console.log(this.ADD)
+    }
+}
+
+// listConsole('태복', '고양시', '가', '나', '다', 1);
+listConsole = (name, address, ...arr) => {
+    console.log(`name is ${name}`);
+    console.log(`address is ${address}`);
+    try {
+        console.log(`그 외 "${arr}" 입니다.`);
+    } catch (error) {
+
+    }
+}
+const list = ['list1', 'list2', 'list3'];
+const listSecond = ['list4', ...list];
+
+whatIsReduce = () => {
+    ['apple', 'banana', 'melon'].reduce(
+        (accumulator, currentValue, currentIndex, array) => {
+            console.log(currentValue);
+            console.log(accumulator);
+            return accumulator + currentValue + ', ';
+        },
+    'basic ');
 }
