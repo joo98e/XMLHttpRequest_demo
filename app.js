@@ -19,6 +19,7 @@ const onNameSubmit = (e, a) => {
         if(API.readyState === XMLHttpRequest.DONE){
             if(API.status == 200){
                 console.log(API.responseText);
+                console.log(yes);
             }else{
                 console.log('error');
             }
