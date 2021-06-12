@@ -3,5 +3,6 @@
     "phone" : "010-1234-5678",
     "age" : "28",
     "dream" : "full stack Developer",
-    "time" : "PM 10:49"
+    "time" : "PM 10:49",
+    "type" : [ "iam", "array" ]
 }
