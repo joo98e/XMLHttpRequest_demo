@@ -16,7 +16,7 @@ const onNameSubmit = (e, a) => {
     e.preventDefault();
 
     const API = new XMLHttpRequest();
-    
+
     API.open('GET', './amIJSON.json', true);
 
     API.send();
@@ -74,19 +74,17 @@ class SEARCH extends ADD_TAG {
 
 // listConsole('태복', '고양시', '가', '나', '다', 1);
 listConsole = (name, address, ...arr) => {
+
     const isOBJ = {
-        name : name,
-        address : address,
-        etc : new Array()
+        name: name,
+        address: address,
     };
 
-    console.log(isOBJ.etc.push(...arr));
-
-    try {
-        console.log(isOBJ);
-    } catch (error) {
-
+    for (let key in arr) {
+        isOBJ['key_' + key] = arr[key];
     }
+
+    return isOBJ;
 }
 
 const list = ['list1', 'list2', 'list3'];
@@ -102,6 +100,20 @@ whatIsReduce = (arg) => {
             return accumulator + currentValue + ', ';
             // HELP..
             // 마지막 요소 추가 안됨
+            // 어디에 응용되지?
         },
-    'basic ');
+        'basic ');
 }
+
+const todos = [
+    { id: 1, content: 'HTML', completed: true },
+    { id: 2, content: 'CSS', completed: false },
+    { id: 3, content: 'JS', completed: false }
+];
+
+filtering = (todos) => {
+    const completedTodos = todos.filter(({ completed }) => completed);
+    console.log(completedTodos);
+}
+
+
