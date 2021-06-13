@@ -17,16 +17,12 @@ const onNameSubmit = (e, a) => {
 
     const API = new XMLHttpRequest();
 
-    API.open('GET', './amIJSON.json', true);
-
-    API.send();
-
     API.onreadystatechange = e => {
         if (API.readyState === XMLHttpRequest.DONE) {
             if (API.status == 200) {
                 let data = JSON.parse(API.response);
                 console.log(typeof data, data);
-                // node로 받아오기 시도해보기
+                
                 for (let key in data) {
                     try {
                         const TAGNAME_P = document.createElement('P');
@@ -44,6 +40,11 @@ const onNameSubmit = (e, a) => {
             }
         }
     }
+
+    API.open('GET', './amIJSON.json', true);
+    // API.open('GET', 'https://jsonplaceholder.typicode.com/posts', true);
+
+    API.send();
 }
 
 const INT_MULTIPLY = x => x * x;
